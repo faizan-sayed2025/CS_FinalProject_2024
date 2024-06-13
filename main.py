@@ -1,9 +1,9 @@
 from tkinter import *
 import random
 
-GAME_WIDTH = 700
-GAME_HEIGHT = 700
-SPEED = 50
+GAME_WIDTH = 600
+GAME_HEIGHT = 600
+SPEED = 100
 SPACE_SIZE = 50
 BODY_PARTS = 3
 SNAKE_COLOR = "#00FF00"
@@ -30,12 +30,15 @@ class Food:
 
     def __init__(self):
 
-        x = random.randint(0, (GAME_WIDTH / SPACE_SIZE)-1) * SPACE_SIZE
-        y = random.randint(0, (GAME_HEIGHT / SPACE_SIZE) - 1) * SPACE_SIZE
-
+        x = random.randint(0, (GAME_WIDTH // SPACE_SIZE)-1) * SPACE_SIZE
+        x_float = float(x)
+        y = random.randint(0, (GAME_HEIGHT // SPACE_SIZE) - 1) * SPACE_SIZE
+        y_float = float(y)
+        x_plus_SPACESIZE_float = float(x + SPACE_SIZE)
+        y_plus_SPACESIZE_float = float(y + SPACE_SIZE)
         self.coordinates = [x, y]
 
-        canvas.create_oval(x, y, x + SPACE_SIZE, y + SPACE_SIZE, fill=FOOD_COLOR, tag="food")
+        canvas.create_oval(float(x), float(y), float(x + SPACE_SIZE), float(y + SPACE_SIZE), fill=FOOD_COLOR, tag="food")
 
 
 def next_turn(snake, food):
